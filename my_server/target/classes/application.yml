@@ -1,0 +1,20 @@
+# 应用名称、默认profile
+spring:
+  application:
+    name: my_server
+  profiles:
+    active: dev
+  main:
+    banner-mode: log
+
+# Server
+server:
+  port: 8666
+  tomcat:
+    max-connections: 10000
+    accept-count: 100
+    connection-timeout: 60000
+    max-threads: 500
+    min-spare-threads: 30
+    max-queue-size: 100
+    max-idle-time: 60000

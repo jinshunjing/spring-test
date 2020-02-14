@@ -8,6 +8,7 @@
     <artifactId>springtest</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>orm</module>
         <module>common</module>
         <module>my_server</module>
     </modules>
@@ -37,10 +38,14 @@
         <druid.version>1.1.15</druid.version>
         <jedis.version>2.9.0</jedis.version>
         <kafka.version>2.1.12.RELEASE</kafka.version>
+        <rocket.version>4.5.1</rocket.version>
         <kafkaclient.version>1.0.2</kafkaclient.version>
         <dubbo.version>0.1.2.RELEASE</dubbo.version>
         <okhttp.version>3.11.0</okhttp.version>
         <sharding.version>3.0.0</sharding.version>
+        <guava.version>27.1-jre</guava.version>
+        <cloud.version>Finchley.SR2</cloud.version>
+        <fastjson.version>1.2.62</fastjson.version>
     </properties>
 
     <dependencies>
@@ -78,7 +83,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.56</version>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <!-- commons -->
@@ -91,6 +96,32 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!-- okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+
+        <!-- sleuth -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <version>2.0.4.RELEASE</version>
         </dependency>
     </dependencies>
 

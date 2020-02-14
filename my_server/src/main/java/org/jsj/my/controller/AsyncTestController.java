@@ -17,12 +17,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
+import org.springframework.web.context.request.async.WebAsyncManager;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.ForkJoinPool;
 
 /**
- * Servlet 3 Async
+ * Servlet 3.0 Async
+ * - IO线程立即返回，提交给业务线程处理
+ * - 业务线程处理完，IO线程会生成新的request，但是response还是原来的那个对象
+ *
  * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://localhost:8666/my/public/async/normal'
  * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://localhost:8666/my/public/async/timeout'
  * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://localhost:8666/my/public/async/error'

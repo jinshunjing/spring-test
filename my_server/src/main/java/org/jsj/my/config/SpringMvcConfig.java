@@ -2,7 +2,8 @@ package org.jsj.my.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.jsj.my.auth.AddrAuthInterceptor;
+import org.jsj.my.auth.AuthInterceptor;
+import org.jsj.my.auth.NoAuthInterceptor;
 import org.jsj.my.spring.JsonMethodArgumentResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,15 +33,24 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
     private static final String[] PUBLIC_URLS = {"/my/public/**"};
 
     @Bean
-    AddrAuthInterceptor authInterceptor() {
-        return new AddrAuthInterceptor();
+    AuthInterceptor authInterceptor() {
+        return new AuthInterceptor();
+    }
+
+    @Bean
+    NoAuthInterceptor noAuthInterceptor() {
+        return new NoAuthInterceptor();
     }
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
+        // private urls
         registry.addInterceptor(authInterceptor())
                 .addPathPatterns(PRIVATE_URLS)
                 .excludePathPatterns(PUBLIC_URLS);
+        // public urls
+        registry.addInterceptor(noAuthInterceptor())
+                .addPathPatterns(PUBLIC_URLS);
     }
 
     @Override

@@ -10,6 +10,7 @@
     <modules>
         <module>orm</module>
         <module>common</module>
+        <module>dao</module>
         <module>my_server</module>
     </modules>
 

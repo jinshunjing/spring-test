@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+    <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="1000"/>
+        <property name="logSlowSql" value="true"/>
+        <property name="mergeSql" value="true"/>
+    </bean>
+
+    <bean id="bizDataSource" primary="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url"
+                  value="jdbc:mysql://${mysql.db.host}:${mysql.db.port}/${mysql.db.schema}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false"/>
+        <property name="username" value="${mysql.db.username}"/>
+        <property name="password" value="${mysql.db.password}"/>
+
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+        <property name="loginTimeout" value="5"/>
+        <property name="maxWait" value="10000"/>
+
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <property name="validationQuery" value="SELECT 'x'"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <property name="poolPreparedStatements" value="false"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <property name="timeBetweenLogStatsMillis" value="3600000"/>
+
+        <property name="filters" value="wall"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="stat-filter"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="sqlBizSessionFactory" primary="true" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="bizDataSource"/>
+        <property name="mapperLocations" value="classpath:org/jsj/dal/mapper/*.xml"></property>
+    </bean>
+
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="org.jsj.dal;org.jsj.dal.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlBizSessionFactory"></property>
+    </bean>
+
+    <bean id="txBizManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="bizDataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txBizManager" proxy-target-class="true"></tx:annotation-driven>
+
+</beans>

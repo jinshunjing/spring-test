@@ -11,6 +11,9 @@
         <module>orm</module>
         <module>common</module>
         <module>dao</module>
+        <module>biz</module>
+        <module>my-client</module>
+        <module>my-service</module>
         <module>my_server</module>
     </modules>
 

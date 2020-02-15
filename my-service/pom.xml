@@ -10,29 +10,37 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jsj</groupId>
-    <artifactId>my_server</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>my-service</artifactId>
+    <version>1.0.0</version>
 
     <dependencies>
-        <!-- intrnal -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.jsj</groupId>
             <artifactId>biz</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.jsj</groupId>
-            <artifactId>my-client</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <!-- swagger -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -41,11 +49,10 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
-                    <mainClass>org.jsj.my.MyAppServer</mainClass>
+                    <mainClass>org.jsj.my.MicroService</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>

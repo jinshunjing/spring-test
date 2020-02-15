@@ -39,7 +39,6 @@ import java.util.concurrent.ForkJoinPool;
 @Api(description = "0.1.0 API", tags = {"Public"})
 public class AsyncTestController extends AbstractAsyncController {
 
-
     @PostMapping("/async/normal")
     @ApiOperation(value = "非阻塞",
             notes = "Execute in thread pool")

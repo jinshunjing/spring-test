@@ -15,6 +15,7 @@
         <module>my-client</module>
         <module>my-service</module>
         <module>my_server</module>
+        <module>socket-server</module>
     </modules>
 
     <packaging>pom</packaging>

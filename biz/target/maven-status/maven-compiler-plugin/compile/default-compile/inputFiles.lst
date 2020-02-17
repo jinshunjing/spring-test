@@ -1,0 +1,10 @@
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/config/RepositoryBean.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/config/ThreadPoolConfig.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/config/RedisConfig.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/ops/TxOps.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/event/TxEvent.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/service/TxService.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/config/PageHelperConfig.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/gov/TxGovernor.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/config/BizConfig.java
+/Users/jim/java/springtest/biz/src/main/java/org/jsj/my/gov/AbstractGovernor.java

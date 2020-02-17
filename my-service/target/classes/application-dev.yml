@@ -1,0 +1,36 @@
+
+# Eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://xx:8661/eureka/
+  instance:
+    prefer-ip-address: true
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+
+# Redis
+spring:
+  redis:
+    host: xx
+    port: 6379
+    password: xx
+
+# MySQL/MyBatis
+mysql:
+  db:
+    host: xx
+    port: 3306
+    username: root
+    password: xx
+    schema: xx
+
+# RocketMQ
+rocket:
+  name_server:
+    address: xx:9876;xx:9876
+  producer:
+    group: dev_my_service
+    timeout: 20000
+  consumer:
+    group: dev_my_service

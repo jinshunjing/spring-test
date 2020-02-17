@@ -1,0 +1,8 @@
+org/jsj/dal/model/TTxData.class
+org/jsj/dal/model/TTxData$COLUMNS.class
+org/jsj/dal/model/TTxData$TTxDataBuilder.class
+org/jsj/dal/model/TTxDataExample$Criteria.class
+org/jsj/dal/model/TTxDataExample$Criterion.class
+org/jsj/dal/dao/TTxDataMapper.class
+org/jsj/dal/model/TTxDataExample.class
+org/jsj/dal/model/TTxDataExample$GeneratedCriteria.class

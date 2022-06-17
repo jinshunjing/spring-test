@@ -50,7 +50,7 @@
         <sharding.version>3.0.0</sharding.version>
         <guava.version>27.1-jre</guava.version>
         <cloud.version>Finchley.SR2</cloud.version>
-        <fastjson.version>1.2.62</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <dependencies>
